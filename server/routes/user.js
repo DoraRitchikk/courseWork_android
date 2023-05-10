@@ -75,7 +75,7 @@ userRouter.delete("/api/remove-from-cart/:id", auth, async (req, res) => {
         }
       }
     }
-    await pool.query('CALL update_user_cart($1,$2)', [
+    await pool.query('UPDATE "users" SET cart = $1 WHERE id = $2', [
       user.cart,
       user.id,
     ]);
