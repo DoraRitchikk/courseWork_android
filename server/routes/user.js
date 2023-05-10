@@ -61,7 +61,7 @@ userRouter.delete("/api/remove-from-cart/:id", auth, async (req, res) => {
     ]);
     const product = rows[0];
     let { rows: userRows } = await pool.query(
-      'SELECT * FROM users WHERE id = $1',
+      "SELECT * FROM 'users' WHERE id = $1",
       [req.user]
     );
     let user = userRows[0];
