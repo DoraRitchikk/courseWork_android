@@ -16,7 +16,7 @@ authRouter.post("/api/signup", async (req, res) => {
 
     try {
 
-    const query = 'CALL get_user_by_email($1)';
+    const query = 'SELECT * FROM users WHERE email = $1'
     const values = [email];
 
     const { rowCount } = await pool.query(query, values);
