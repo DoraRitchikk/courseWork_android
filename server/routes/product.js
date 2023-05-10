@@ -59,10 +59,11 @@ productRouter.post("/api/rate-product", async (req, res) => {
     };
 
     product.ratings.push(ratingSchema);
+    rat = JSON.stringify(product.rating)
 
     query = {
       text: "UPDATE products SET ratings=$1 WHERE id=$2 ",
-      values: [product.ratings, id],
+      values: [rat, id],
     };
     result = await pool.query(query);
     product = result.rows[0];
