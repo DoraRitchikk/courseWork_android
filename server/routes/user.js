@@ -13,7 +13,7 @@ const pool = new Pool({
 userRouter.post("/api/add-to-cart", auth, async (req, res) => {
   try {
     const { id } = req.body;
-    const { rows } = await pool.query("CALL get_product_by_id($1)", [
+    const { rows } = await pool.query("SELECT * FROM products WHERE id = $1", [
       id,
     ]);
     const product = rows[0];
