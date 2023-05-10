@@ -26,7 +26,7 @@ authRouter.post("/api/signup", async (req, res) => {
     }
 
     const hashedPassword = await bcryptjs.hash(password, 8);
-    
+    console.log('Alohaaaa')
     await pool.query('CALL insert_user($1,$2,$3)',[email, hashedPassword, name]);
      res.sendStatus(201);
      
@@ -43,7 +43,7 @@ authRouter.post("/api/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await pool.query('SELECT * from users WHERE email like $1',
+    const user = await pool.query('SELECT * from "users" WHERE email like $1',
       [email]
     );
     if (user.rowCount === 0) {

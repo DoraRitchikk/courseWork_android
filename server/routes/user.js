@@ -3,7 +3,8 @@ const userRouter = express.Router();
 const auth = require("../middlewares/auth");
 const { Pool } = require("pg");
 
-const connectionString = 'postgres://dariaritchik:yR2gpWx8uka8zsyrjiTCDE7SDOE2KozC@dpg-chcb76bhp8u016660cug-a/marketdb_sbwc'
+const connectionString = 'postgres://dariaritchik:yR2gpWx8uka8zsyrjiTCDE7SDOE2KozC@dpg-chcb76bhp8u016660cug-a.oregon-postgres.render.com/marketdb_sbwc'
+
 const pool = new Pool({
   connectionString: connectionString,
 });
@@ -41,7 +42,7 @@ userRouter.post("/api/add-to-cart", auth, async (req, res) => {
       }
     }
     let jsonCart = JSON.stringify(user.cart);
-    await pool.query('CALL update_user_cart($1,$2)', [
+    await pool.query('UPDATE "users" SET cart = $1 WHERE id = $2;', [
       jsonCart,
       user.id,
     ]);
