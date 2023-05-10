@@ -36,7 +36,7 @@ class _AddressScreenState extends State<AddressScreen> {
     paymentItems.add(
       PaymentItem(
         amount: widget.totalAmount,
-        label: 'Total Amount',
+        label: 'Общая стоимость',
         status: PaymentItemStatus.final_price,
       ),
     );
@@ -94,7 +94,7 @@ class _AddressScreenState extends State<AddressScreen> {
         addressToBeUsed =
             '${flatBuildingController.text}, ${areaController.text}, ${cityController.text} - ${pincodeController.text}';
       } else {
-        throw Exception('Please enter all the values!');
+        throw Exception('Пожалуйста, введите все значения!');
       }
     } else if (addressFromProvider.isNotEmpty) {
       addressToBeUsed = addressFromProvider;
@@ -159,22 +159,22 @@ class _AddressScreenState extends State<AddressScreen> {
                   children: [
                     CustomTextField(
                       controller: flatBuildingController,
-                      hintText: 'Flat, House no, Building',
+                      hintText: 'Адрес (дом, улица, апартаменты)',
                     ),
                     const SizedBox(height: 10),
                     CustomTextField(
                       controller: areaController,
-                      hintText: 'Area, Street',
+                      hintText: 'Район',
                     ),
                     const SizedBox(height: 10),
                     CustomTextField(
                       controller: pincodeController,
-                      hintText: 'Pincode',
+                      hintText: 'Код',
                     ),
                     const SizedBox(height: 10),
                     CustomTextField(
                       controller: cityController,
-                      hintText: 'Town/City',
+                      hintText: 'Город',
                     ),
                     const SizedBox(height: 10),
                   ],

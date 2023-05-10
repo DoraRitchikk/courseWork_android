@@ -68,13 +68,13 @@ class SearchedProduct extends StatelessWidget {
                   Container(
                     width: 235,
                     padding: const EdgeInsets.only(left: 10),
-                    child: const Text('Eligible for FREE Shipping'),
+                    child: const Text(''),
                   ),
                   Container(
                     width: 235,
                     padding: const EdgeInsets.only(left: 10, top: 5),
                     child: const Text(
-                      'In Stock',
+                      'В продаже',
                       style: TextStyle(
                         color: Colors.teal,
                       ),

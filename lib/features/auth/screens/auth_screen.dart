@@ -62,7 +62,7 @@ class _AuthScreenState extends State<AuthScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Welcome',
+                'Добро пожаловать',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w500,
@@ -73,7 +73,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ? GlobalVariables.backgroundColor
                     : GlobalVariables.greyBackgroundCOlor,
                 title: const Text(
-                  'Create Account',
+                  'Создать аккаунт',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -99,26 +99,27 @@ class _AuthScreenState extends State<AuthScreen> {
                       children: [
                         CustomTextField(
                           controller: _nameController,
-                          hintText: 'Name',
+                          hintText: 'Имя',
                         ),
                         const SizedBox(height: 10),
                         CustomTextField(
                           controller: _emailController,
-                          hintText: 'Email',
+                          hintText: 'Почта',
                         ),
                         const SizedBox(height: 10),
                         CustomTextField(
                           controller: _passwordController,
-                          hintText: 'Password',
+                          hintText: 'Пароль',
                         ),
                         const SizedBox(height: 10),
                         CustomButton(
-                          text: 'Sign Up',
+                          text: 'Зарегистрироваться',
                           onTap: () {
                             if (_signUpFormKey.currentState!.validate()) {
                               signUpUser();
                             }
                           },
+                          color: const Color.fromRGBO(254, 216, 19, 1),
                         )
                       ],
                     ),
@@ -129,7 +130,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ? GlobalVariables.backgroundColor
                     : GlobalVariables.greyBackgroundCOlor,
                 title: const Text(
-                  'Sign-In.',
+                  'Войти в аккаунт.',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -155,21 +156,22 @@ class _AuthScreenState extends State<AuthScreen> {
                       children: [
                         CustomTextField(
                           controller: _emailController,
-                          hintText: 'Email',
+                          hintText: 'Почта',
                         ),
                         const SizedBox(height: 10),
                         CustomTextField(
                           controller: _passwordController,
-                          hintText: 'Password',
+                          hintText: 'Пароль',
                         ),
                         const SizedBox(height: 10),
                         CustomButton(
-                          text: 'Sign In',
+                          text: 'Вход',
                           onTap: () {
                             if (_signInFormKey.currentState!.validate()) {
                               signInUser();
                             }
                           },
+                          color: const Color.fromRGBO(254, 216, 19, 1),
                         )
                       ],
                     ),

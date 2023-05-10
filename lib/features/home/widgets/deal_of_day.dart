@@ -48,7 +48,7 @@ class _DealOfDayState extends State<DealOfDay> {
                       alignment: Alignment.topLeft,
                       padding: const EdgeInsets.only(left: 10, top: 15),
                       child: const Text(
-                        'Deal of the day',
+                        'Предложение дня',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -70,7 +70,7 @@ class _DealOfDayState extends State<DealOfDay> {
                       padding:
                           const EdgeInsets.only(left: 15, top: 5, right: 40),
                       child: const Text(
-                        'Best Decision!',
+                        'Лучшее решение!',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -97,7 +97,7 @@ class _DealOfDayState extends State<DealOfDay> {
                       ).copyWith(left: 15),
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'See all deals',
+                        'Смотреть детали',
                         style: TextStyle(
                           color: Colors.cyan[800],
                         ),

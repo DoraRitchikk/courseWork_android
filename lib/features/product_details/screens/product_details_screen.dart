@@ -112,7 +112,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search DoRI.mall',
+                        hintText: 'Поиск DoRI.mall',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
@@ -187,7 +187,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               padding: const EdgeInsets.all(8),
               child: RichText(
                 text: TextSpan(
-                  text: 'Deal Price: ',
+                  text: 'Цена: ',
                   style: const TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -217,15 +217,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             Padding(
               padding: const EdgeInsets.all(10),
               child: CustomButton(
-                text: 'Buy Now',
+                text: 'Купить сейчас',
                 onTap: () {},
+                color: const Color.fromRGBO(254, 216, 19, 1),
               ),
             ),
             const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(10),
               child: CustomButton(
-                text: 'Add to Cart',
+                text: 'Добавить в корзину',
                 onTap: addToCart,
                 color: const Color.fromRGBO(254, 216, 19, 1),
               ),
@@ -238,7 +239,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
-                'Rate The Product',
+                'Поставить рейтинг',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,

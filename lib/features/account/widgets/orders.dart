@@ -42,7 +42,7 @@ class _OrdersState extends State<Orders> {
                       left: 15,
                     ),
                     child: const Text(
-                      'Your Orders',
+                      'Ваши заказы',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -54,7 +54,7 @@ class _OrdersState extends State<Orders> {
                       right: 15,
                     ),
                     child: Text(
-                      'See all',
+                      'Всё',
                       style: TextStyle(
                         color: GlobalVariables.selectedNavBarColor,
                       ),

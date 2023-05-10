@@ -25,7 +25,7 @@ const admin = async (req, res, next) => {
     const { rows } = await pool.query(userQuery);
     const user = rows[0];
 
-    if (user.type === "user" || user.type === "seller") {
+    if (user.type === "user") {
       return res.status(401).json({ msg: "You are not an admin!" });
     }
     req.user = verified.id;

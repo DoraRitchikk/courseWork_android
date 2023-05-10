@@ -12,11 +12,7 @@ class TopButtons extends StatelessWidget {
         Row(
           children: [
             AccountButton(
-              text: 'Your Orders',
-              onTap: () {},
-            ),
-            AccountButton(
-              text: 'Turn Seller',
+              text: 'Все заказы',
               onTap: () {},
             ),
           ],
@@ -25,12 +21,8 @@ class TopButtons extends StatelessWidget {
         Row(
           children: [
             AccountButton(
-              text: 'Log Out',
+              text: 'Выйти из аккаунта',
               onTap: () => AccountServices().logOut(context),
-            ),
-            AccountButton(
-              text: 'Your Wish List',
-              onTap: () {},
             ),
           ],
         ),

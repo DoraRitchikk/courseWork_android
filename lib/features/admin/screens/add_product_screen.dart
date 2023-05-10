@@ -147,23 +147,23 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 const SizedBox(height: 30),
                 CustomTextField(
                   controller: productNameController,
-                  hintText: 'Product Name',
+                  hintText: 'Название продукта',
                 ),
                 const SizedBox(height: 10),
                 CustomTextField(
                   controller: descriptionController,
-                  hintText: 'Description',
+                  hintText: 'Описание',
                   maxLines: 7,
                 ),
                 const SizedBox(height: 10),
                 CustomTextField(
                   controller: priceController,
-                  hintText: 'Price',
+                  hintText: 'Цена',
                 ),
                 const SizedBox(height: 10),
                 CustomTextField(
                   controller: quantityController,
-                  hintText: 'Quantity',
+                  hintText: 'Количество',
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
@@ -186,7 +186,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 ),
                 const SizedBox(height: 10),
                 CustomButton(
-                  text: 'Sell',
+                  text: 'Продажа',
                   onTap: sellProduct,
                 ),
               ],

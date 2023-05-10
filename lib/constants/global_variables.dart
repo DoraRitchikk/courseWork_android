@@ -20,33 +20,33 @@ class GlobalVariables {
 
   // STATIC IMAGES
   static const List<String> carouselImages = [
-    'https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/WLA/TS/D37847648_Accessories_savingdays_Jan22_Cat_PC_1500.jpg',
-    'https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg',
-    'https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/AdvantagePrime/BAU/14thJan/D37196025_IN_WL_AdvantageJustforPrime_Jan_Mob_ingress-banner_1242x450.jpg',
-    'https://images-na.ssl-images-amazon.com/images/G/31/Symbol/2020/00NEW/1242_450Banners/PL31_copy._CB432483346_.jpg',
-    'https://images-na.ssl-images-amazon.com/images/G/31/img21/shoes/September/SSW/pc-header._CB641971330_.jpg',
+    'https://www.ixbt.com/img/n1/news/2019/2/1/gsmarena_001.jpg',
+    'https://avatars.mds.yandex.net/i?id=ffce94bbf6d27be5fbf507cb90c4a0eea757ae3e-8539554-images-thumbs&n=13',
+    'https://muizre.ru/_dr/85/19127267.jpg',
+    'https://www.sostav.ru/images/news/2021/09/07/cnyzf0vl.png',
+    'https://i.pinimg.com/originals/d3/d1/74/d3d174396dfc1b4cee0251b7ae2d399b.jpg',
   ];
 
   static const List<Map<String, String>> categoryImages = [
     {
       'title': 'Mobiles',
-      'image': 'assets/images/mobiles.jpeg',
+      'image': 'assets/images/mobiles.webp',
     },
     {
       'title': 'Essentials',
-      'image': 'assets/images/essentials.jpeg',
+      'image': 'assets/images/essentials.png',
     },
     {
       'title': 'Appliances',
-      'image': 'assets/images/appliances.jpeg',
+      'image': 'assets/images/appliances.png',
     },
     {
       'title': 'Books',
-      'image': 'assets/images/books.jpeg',
+      'image': 'assets/images/books.png',
     },
     {
       'title': 'Fashion',
-      'image': 'assets/images/fashion.jpeg',
+      'image': 'assets/images/fashion.png',
     },
   ];
 }
