@@ -9,8 +9,7 @@ const userRouter = require("./routes/user");
 const PORT = 5432;
 const app = express();
 
-const connectionString = 'postgres://dariaritchik:yR2gpWx8uka8zsyrjiTCDE7SDOE2KozC@dpg-chcb76bhp8u016660cug-a.oregon-postgres.render.com/marketdb_sbwc?ssl=true'
-
+const connectionString = 'postgres://dariaritchik:yR2gpWx8uka8zsyrjiTCDE7SDOE2KozC@dpg-chcb76bhp8u016660cug-a/marketdb_sbwc'
 const pool = new Pool({
   connectionString: connectionString,
 });
