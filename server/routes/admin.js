@@ -32,7 +32,7 @@
     adminRouter.get("/admin/get-products", admin, async (req, res) => {
       try {
         const client = await pool.connect();
-        const queryText = "CALL get_all_products()";
+        const queryText = " SELECT * FROM products";
         const result = await client.query(queryText);
         const products = result.rows;
         client.release();
@@ -47,7 +47,7 @@
       try {
         const { id } = req.body;
         const client = await pool.connect();
-        const queryText = "CALL delete_product($1)";
+        const queryText = "DELETE FROM products WHERE id = $1";
         const values = [id];
         const result = await client.query(queryText, values);
         const product = result.rows[0];
@@ -61,7 +61,7 @@
     adminRouter.get("/admin/get-orders", admin, async (req, res) => {
       try {
         const client = await pool.connect();
-        const queryText = "CALL get_all_orders()";
+        const queryText = "  SELECT * FROM orders";
         const result = await client.query(queryText);
         const orders = result.rows;
         client.release();
@@ -75,7 +75,7 @@
       try {
         const { id, status } = req.body;
         const client = await pool.connect();
-        const queryText = "CALL update_order_status($1, $2)";
+        const queryText = "UPDATE orders SET status = $1 WHERE id = $2";
         const values = [status, id];
         const result = await client.query(queryText, values);
         const order = result.rows[0];
@@ -87,7 +87,7 @@
     });
     
     adminRouter.get("/admin/analytics", admin, async (req, res) => {
-      const result = await pool.query('CALL get_all_products()');
+      const result = await pool.query('SELECT * FROM products');
       const orders = result.rows;
       let totalEarnings = 0;
       for (let i = 0; i < orders.length; i++) {
