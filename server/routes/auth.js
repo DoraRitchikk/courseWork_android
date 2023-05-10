@@ -4,8 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
 const authRouter = express.Router();
 
-const connectionString = 'postgres://dariaritchik:yR2gpWx8uka8zsyrjiTCDE7SDOE2KozC@dpg-chcb76bhp8u016660cug-a.oregon-postgres.render.com/marketdb_sbwc?ssl=true'
-
+const connectionString = 'postgres://dariaritchik:yR2gpWx8uka8zsyrjiTCDE7SDOE2KozC@dpg-chcb76bhp8u016660cug-a/marketdb_sbwc'
 const pool = new Pool({
   connectionString: connectionString,
 });
@@ -52,6 +51,7 @@ authRouter.post("/api/signin", async (req, res) => {
         .status(400)
         .json({ msg: "User with this email does not exist!" });
     }
+    console.log('Aloha')
 
     const isMatch = await bcryptjs.compare(password, user.rows[0].password);
     if (!isMatch) {
