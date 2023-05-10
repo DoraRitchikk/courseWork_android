@@ -30,25 +30,39 @@ class AuthService {
         token: '',
         cart: [],
       );
-
-      http.Response res = await http.post(
-        Uri.https(uri,'/api/signup'),
-        body: user.toJson(),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-      );
-
-      httpErrorHandle(
-        response: res,
-        context: context,
-        onSuccess: () {
-          showSnackBar(
-            context,
-            'Account created! Login with the same credentials!',
-          );
-        },
-      );
+      if (user.name.length > 8) {
+        if (user.email.length > 8) {
+          if (user.password.length > 8) {
+            http.Response res = await http.post(
+              Uri.https(uri, '/api/signup'),
+              body: user.toJson(),
+              headers: <String, String>{
+                'Content-Type': 'application/json; charset=UTF-8',
+              },
+            );
+            httpErrorHandle(
+              response: res,
+              context: context,
+              onSuccess: () {
+                showSnackBar(
+                  context,
+                  'Аккаунт создан!Войдите с такими же кредами!',
+                );
+              },
+            );
+          }
+          else{
+            showSnackBar(context, 'Пароль должен быть больше 8 символов!');
+          }
+        }
+        else{
+          showSnackBar(context, 'почта должна быть больше 8 символов!');
+        }
+      }
+      else
+        {
+          showSnackBar(context, 'Имя должно быть больше 8 символов!');
+        }
     } catch (e) {
       showSnackBar(context, e.toString());
     }

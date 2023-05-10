@@ -83,7 +83,7 @@ class _CartProductState extends State<CartProduct> {
                   Container(
                     width: 235,
                     padding: const EdgeInsets.only(left: 10),
-                    child: const Text('Eligible for FREE Shipping'),
+                    child: const Text(''),
                   ),
                   Container(
                     width: 235,

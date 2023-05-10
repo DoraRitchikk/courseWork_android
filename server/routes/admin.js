@@ -120,7 +120,7 @@
     const categoryOrders = await db.query(`
       SELECT * 
       FROM orders 
-      WHERE products @> '[{"product": {"category": "${category}"}}]'`);
+      WHERE products like '[{"product": {"category": "${category}"}}]'`);
   
     for (const order of categoryOrders.rows) {
       for (const product of order.products) {

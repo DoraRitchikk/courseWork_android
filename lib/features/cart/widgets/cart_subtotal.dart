@@ -16,7 +16,7 @@ class CartSubtotal extends StatelessWidget {
       child: Row(
         children: [
           const Text(
-            'Subtotal ',
+            'Итоговая стоимость ',
             style: TextStyle(
               fontSize: 20,
             ),
