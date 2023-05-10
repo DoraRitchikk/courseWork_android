@@ -3,7 +3,7 @@ const userRouter = express.Router();
 const auth = require("../middlewares/auth");
 const { Pool } = require("pg");
 
-const connectionString = 'postgres://doraritchik:cjUJjkJiT254pgaVMoOyEvOK69smAEjN@dpg-ch3p3j4eoogsn04lonrg-a.oregon-postgres.render.com/marketdb?ssl=true'
+const connectionString = 'postgres://dariaritchik:yR2gpWx8uka8zsyrjiTCDE7SDOE2KozC@dpg-chcb76bhp8u016660cug-a.oregon-postgres.render.com/marketdb_sbwc?ssl=true'
 
 const pool = new Pool({
   connectionString: connectionString,
@@ -12,12 +12,12 @@ const pool = new Pool({
 userRouter.post("/api/add-to-cart", auth, async (req, res) => {
   try {
     const { id } = req.body;
-    const { rows } = await pool.query("SELECT * FROM products WHERE id = $1", [
+    const { rows } = await pool.query("CALL get_product_by_id($1)", [
       id,
     ]);
     const product = rows[0];
     let { rows: userRows } = await pool.query(
-      'SELECT * FROM "users" WHERE id = $1',
+      'CALL get_user_by_id($1)',
       [req.user]
     );
     let user = userRows[0];
@@ -41,8 +41,9 @@ userRouter.post("/api/add-to-cart", auth, async (req, res) => {
         user.cart.push({ product, quantity: 1 });
       }
     }
-    await pool.query('UPDATE "users" SET cart = $1 WHERE id = $2', [
-      user.cart,
+    let jsonCart = JSON.stringify(user.cart);
+    await pool.query('CALL update_user_cart($1,$2)', [
+      jsonCart,
       user.id,
     ]);
     res.json(user);
@@ -54,12 +55,12 @@ userRouter.post("/api/add-to-cart", auth, async (req, res) => {
 userRouter.delete("/api/remove-from-cart/:id", auth, async (req, res) => {
   try {
     const { id } = req.params;
-    const { rows } = await pool.query("SELECT * FROM products WHERE id = $1", [
+    const { rows } = await pool.query("CALL get_product_by_id($1)", [
       id,
     ]);
     const product = rows[0];
     let { rows: userRows } = await pool.query(
-      'SELECT * FROM "users" WHERE id = $1',
+      'CALL get_user_by_id($1)',
       [req.user]
     );
     let user = userRows[0];
@@ -73,7 +74,7 @@ userRouter.delete("/api/remove-from-cart/:id", auth, async (req, res) => {
         }
       }
     }
-    await pool.query("UPDATE User SET cart = $1 WHERE id = $2", [
+    await pool.query('CALL update_user_cart($1,$2)', [
       user.cart,
       user.id,
     ]);
@@ -89,7 +90,7 @@ userRouter.post("/api/save-user-address", auth, async (req, res) => {
     const { address } = req.body;
     const client = await pool.connect();
     let result = await client.query(
-      'UPDATE "users" SET address = $1 WHERE id = $2',
+      'CALL update_user_address($1, $2)',
       [address, req.user]
     );
     client.release();
@@ -110,16 +111,17 @@ userRouter.post("/api/order", auth, async (req, res) => {
 
     for (let i = 0; i < cart.length; i++) {
       let result = await client.query(
-        "SELECT * FROM products WHERE id = $1 FOR UPDATE",
+        "CALL get_product_by_id($1)",
         [cart[i].productId]
       );
       let product = result.rows[0];
 
       if (product.quantity >= cart[i].quantity) {
         await client.query(
-          "UPDATE products SET quantity = quantity - $1 WHERE id = $2",
+          "CALL update_product_quantity($1,$2)",
           [cart[i].quantity, product.id]
         );
+        
         products.push({ productId: product.id, quantity: cart[i].quantity });
       } else {
         await client.query("ROLLBACK");
@@ -131,14 +133,15 @@ userRouter.post("/api/order", auth, async (req, res) => {
     }
 
     let result = await client.query(
-      "UPDATE User SET cart = $1 WHERE id = $2 RETURNING *",
+      'update_user_cart($1,$2)',
       [[], req.user]
     );
     let user = result.rows[0];
 
+    let prod = JSON.stringify(products)
     result = await client.query(
-      "INSERT INTO orders (products, total_price, address, user_id, ordered_at) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [products, totalPrice, address, req.user, new Date().getTime()]
+      "CALL create_order($1,$2,$3,$4,$5))",
+      [prod, totalPrice, address, req.user, new Date().getTime()]
     );
     let order = result.rows[0];
 
@@ -155,7 +158,7 @@ userRouter.get("/api/orders/me", auth, async (req, res) => {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      "SELECT * FROM orders WHERE user_id = $1",
+      "CALL get_user_orders($1)",
       [req.user]
     );
     const orders = result.rows;

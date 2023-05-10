@@ -30,7 +30,7 @@ class CartServices {
         context: context,
         onSuccess: () {
           User user =
-              userProvider.user.copyWith();
+              userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
           userProvider.setUserFromModel(user);
         },
       );

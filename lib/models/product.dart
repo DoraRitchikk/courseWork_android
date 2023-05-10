@@ -43,13 +43,13 @@ class Product {
       images: List<String>.from(map['images']),
       category: map['category'] ?? '',
       price: map['price']?.toDouble() ?? 0.0,
-      id: map['_id'],
+      id: map['id'],
       rating: map['ratings'] != null
           ? List<Rating>.from(
-              map['ratings']?.map(
-                (x) => Rating.fromMap(x),
-              ),
-            )
+        map['ratings']?.map(
+              (x) => Rating.fromMap(x),
+        ),
+      )
           : null,
     );
   }

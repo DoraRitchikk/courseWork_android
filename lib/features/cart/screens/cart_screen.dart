@@ -33,7 +33,9 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final user = context.watch<UserProvider>().user;
     int sum = 0;
-
+    user.cart
+        .map((e) => sum += e['quantity'] * e['product']['price'] as int)
+        .toList();
 
     return Scaffold(
       appBar: PreferredSize(
@@ -88,7 +90,7 @@ class _CartScreenState extends State<CartScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search Amazon.in',
+                        hintText: 'Search DoRi.mall',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
@@ -116,7 +118,7 @@ class _CartScreenState extends State<CartScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: CustomButton(
-                text: 'Proceed to Buy items)',
+                text: 'Proceed to Buy (${user.cart.length} items)',
                 onTap: () => navigateToAddress(sum),
                 color: Colors.yellow[600],
               ),
@@ -125,6 +127,16 @@ class _CartScreenState extends State<CartScreen> {
             Container(
               color: Colors.black12.withOpacity(0.08),
               height: 1,
+            ),
+            const SizedBox(height: 5),
+            ListView.builder(
+              itemCount: user.cart.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return CartProduct(
+                  index: index,
+                );
+              },
             ),
           ],
         ),

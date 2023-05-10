@@ -28,13 +28,12 @@ class ProductDetailsServices {
           'id': product.id!,
         }),
       );
-
       httpErrorHandle(
         response: res,
         context: context,
         onSuccess: () {
           User user =
-              userProvider.user.copyWith();
+              userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
           userProvider.setUserFromModel(user);
         },
       );

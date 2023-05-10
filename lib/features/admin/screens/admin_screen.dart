@@ -48,7 +48,6 @@ class _AdminScreenState extends State<AdminScreen> {
                   'assets/images/amazon_in.png',
                   width: 120,
                   height: 45,
-                  color: Colors.black,
                 ),
               ),
               const Text(

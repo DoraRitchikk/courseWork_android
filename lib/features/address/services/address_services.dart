@@ -59,6 +59,7 @@ class AddressServices {
             'x-auth-token': userProvider.user.token,
           },
           body: jsonEncode({
+            'cart': userProvider.user.cart,
             'address': address,
             'totalPrice': totalSum,
           }));
@@ -69,6 +70,7 @@ class AddressServices {
         onSuccess: () {
           showSnackBar(context, 'Your order has been placed!');
           User user = userProvider.user.copyWith(
+            cart: [],
           );
           userProvider.setUserFromModel(user);
         },

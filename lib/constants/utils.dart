@@ -24,7 +24,7 @@ Future<List<File>> pickImages() async {
       }
     }
   } catch (e) {
-    debugPrint(e.toString());
+    debugPrint("ALOHAAAAAAAAAAAAAAAAAAAAA");
   }
   return images;
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 import 'package:amazon_clone_tutorial/constants/error_handling.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
@@ -43,7 +44,6 @@ class AdminServices {
         category: category,
         price: price,
       );
-
       http.Response res = await http.post(
         Uri.parse('$uri/admin/add-product'),
         headers: {
@@ -113,7 +113,7 @@ class AdminServices {
           'x-auth-token': userProvider.user.token,
         },
         body: jsonEncode({
-          'id': product.id,
+          'Id': product.id,
         }),
       );
 
@@ -176,7 +176,7 @@ class AdminServices {
           'x-auth-token': userProvider.user.token,
         },
         body: jsonEncode({
-          'id': order.id,
+          'Id': order.id,
           'status': status,
         }),
       );
