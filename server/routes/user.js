@@ -5,6 +5,7 @@ const { Pool } = require("pg");
 
 
 const connectionString = 'postgres://dariaritchik:yR2gpWx8uka8zsyrjiTCDE7SDOE2KozC@dpg-chcb76bhp8u016660cug-a.oregon-postgres.render.com/marketdb_sbwc?ssl=true'
+
 const pool = new Pool({
   connectionString: connectionString,
 });
@@ -17,7 +18,7 @@ userRouter.post("/api/add-to-cart", auth, async (req, res) => {
     ]);
     const product = rows[0];
     let { rows: userRows } = await pool.query(
-      'CALL get_user_by_id($1)',
+      'SELECT * FROM users WHERE id = $1',
       [req.user]
     );
     let user = userRows[0];

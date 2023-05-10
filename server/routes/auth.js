@@ -27,7 +27,6 @@ authRouter.post("/api/signup", async (req, res) => {
     }
 
     const hashedPassword = await bcryptjs.hash(password, 8);
-    console.log('Alohaaaa')
     await pool.query('CALL insert_user($1,$2,$3)',[email, hashedPassword, name]);
      res.sendStatus(201);
      
@@ -52,7 +51,7 @@ authRouter.post("/api/signin", async (req, res) => {
         .status(400)
         .json({ msg: "User with this email does not exist!" });
     }
-    console.log('Aloha')
+
 
     const isMatch = await bcryptjs.compare(password, user.rows[0].password);
     if (!isMatch) {
