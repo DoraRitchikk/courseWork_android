@@ -59,7 +59,7 @@ productRouter.post("/api/rate-product", async (req, res) => {
     };
 
     product.ratings.push(ratingSchema);
-    rat = JSON.stringify(product.rating)
+    rat = JSON.stringify(product.ratings)
 
     query = {
       text: "UPDATE products SET ratings=$1 WHERE id=$2 ",
