@@ -67,7 +67,7 @@ authRouter.post("/api/signin", async (req, res) => {
 // get user data
 authRouter.get("/", async (req, res) => {
   try {
-    const query = 'CALL get_user_by_id(1)';
+    const query = 'CALL get_user_by_id($1)';
     const values = [req.user];
 
     const { rows } = await pool.query(query, values);
