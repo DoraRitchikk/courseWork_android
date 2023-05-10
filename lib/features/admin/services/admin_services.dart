@@ -45,7 +45,7 @@ class AdminServices {
         price: price,
       );
       http.Response res = await http.post(
-        Uri.parse('$uri/admin/add-product'),
+        Uri.https(uri,'/admin/add-product'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
@@ -72,7 +72,7 @@ class AdminServices {
     List<Product> productList = [];
     try {
       http.Response res =
-          await http.get(Uri.parse('$uri/admin/get-products'), headers: {
+          await http.get(Uri.https(uri,'/admin/get-products'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
@@ -107,7 +107,7 @@ class AdminServices {
 
     try {
       http.Response res = await http.post(
-        Uri.parse('$uri/admin/delete-product'),
+        Uri.https(uri,'/admin/delete-product'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
@@ -134,7 +134,7 @@ class AdminServices {
     List<Order> orderList = [];
     try {
       http.Response res =
-          await http.get(Uri.parse('$uri/admin/get-orders'), headers: {
+          await http.get(Uri.https(uri,'/admin/get-orders'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
@@ -170,7 +170,7 @@ class AdminServices {
 
     try {
       http.Response res = await http.post(
-        Uri.parse('$uri/admin/change-order-status'),
+        Uri.https(uri,'/admin/change-order-status'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
@@ -197,7 +197,7 @@ class AdminServices {
     int totalEarning = 0;
     try {
       http.Response res =
-          await http.get(Uri.parse('$uri/admin/analytics'), headers: {
+          await http.get(Uri.https(uri,'/admin/analytics'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
