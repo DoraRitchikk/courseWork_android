@@ -61,7 +61,7 @@ userRouter.delete("/api/remove-from-cart/:id", async (req, res) => {
     ]);
     const product = rows[0];
     let { rows: userRows } = await pool.query(
-      "SELECT * FROM 'users' WHERE id = $1",
+      'SELECT * FROM "users" WHERE id = $1',
       [req.user]
     );
     let user = userRows[0];
@@ -75,7 +75,7 @@ userRouter.delete("/api/remove-from-cart/:id", async (req, res) => {
       }
     }
     let cartJson = JSON.stringify(user.cart);
-    await pool.query("UPDATE 'users' SET cart = $1 WHERE id = $2", [
+    await pool.query('UPDATE "users" SET cart = $1 WHERE id = $2', [
       cartJson,
       user.id,
     ]);
