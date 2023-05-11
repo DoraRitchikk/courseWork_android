@@ -19,7 +19,7 @@ class CartServices {
 
     try {
       http.Response res = await http.delete(
-        Uri.https(uri,'/api/remove-from-cart${product.id}'),
+        Uri.https(uri,'/api/remove-from-cart/${product.id}'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
         },
