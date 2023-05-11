@@ -75,6 +75,7 @@ userRouter.delete("/api/remove-from-cart/:id", async (req, res) => {
       }
     }
     let cartJson = JSON.stringify(user.cart);
+    console.log(cartJson)
     await pool.query('UPDATE "users" SET cart = $1 WHERE id = $2', [
       cartJson,
       user.id,
