@@ -42,7 +42,7 @@
       }
     });
     
-    // Delete the product
+    // Delete the product2
     adminRouter.post("/admin/delete-product", admin, async (req, res) => {
       try {
         const { id } = req.body;
